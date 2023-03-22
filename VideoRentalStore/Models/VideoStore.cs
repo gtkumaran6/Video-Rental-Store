@@ -6,6 +6,7 @@
         static int i = 0;
 
         Video[] Videos = new Video[10];
+        VideoRent VideoRent=new VideoRent();
 
         public void addVideo(string title)
         {
@@ -24,7 +25,7 @@
             {
                 if (video != null && video.Title == title)
                 {
-                    video.CheckOut();
+                    VideoRent.CheckOut();
                     break;
                 }
             }
@@ -36,7 +37,7 @@
             {
                 if (video != null && video.Title == title)
                 {
-                    video.Return();
+                    VideoRent.Return();
                     break;
                 }
             }
@@ -58,7 +59,7 @@
             {
                 if (video != null)
                 {
-                    Console.WriteLine("Title: {0}, Average Rating: {1}, Checked Out: {2}", video.Title, video.AverageRating, video.CheckedOut ? "Yes" : "No");
+                    Console.WriteLine("Title: {0}, Average Rating: {1}, Checked Out: {2}", video.Title, video.AverageRating, VideoRent.CheckedOut ? "Yes" : "No");
                 }
             }
         }

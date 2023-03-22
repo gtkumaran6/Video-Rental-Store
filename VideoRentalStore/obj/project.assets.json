@@ -10762,11 +10762,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Video Rental App\\VideoRentalStore\\VideoRentalStore.csproj",
+      "projectUniqueName": "D:\\Rajamannar\\Video-Rental-Store\\VideoRentalStore\\VideoRentalStore.csproj",
       "projectName": "VideoRentalStore",
-      "projectPath": "D:\\Video Rental App\\VideoRentalStore\\VideoRentalStore.csproj",
+      "projectPath": "D:\\Rajamannar\\Video-Rental-Store\\VideoRentalStore\\VideoRentalStore.csproj",
       "packagesPath": "C:\\Users\\01059527\\.nuget\\packages\\",
-      "outputPath": "D:\\Video Rental App\\VideoRentalStore\\obj\\",
+      "outputPath": "D:\\Rajamannar\\Video-Rental-Store\\VideoRentalStore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A3GBwb2WPVzAoxCVZ0SBXaTs+IoPCwcKqCrtbJuq6RVdhhy3zyxSL982A6swuT8joyurJYS9Tu57yJCo2rCarg==",
+  "dgSpecHash": "7XhVyxFFEWO0xLRNocDB+gEr5Cp3mC1CpkO+vYbky0ghTrC9JBDpkIuZW3JoBZHJJnGQgdi4h+vB1XEd6NwQQA==",
   "success": true,
-  "projectFilePath": "D:\\Video Rental App\\VideoRentalStore\\VideoRentalStore.csproj",
+  "projectFilePath": "D:\\Rajamannar\\Video-Rental-Store\\VideoRentalStore\\VideoRentalStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\01059527\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\01059527\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
