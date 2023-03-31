@@ -4,35 +4,48 @@
     {
         static void Main(string[] args)
         {
-             VideoStore vstore= new VideoStore();
-            vstore.addVideo("The Matrix");
-            vstore.addVideo("Godfather II");
-            vstore.addVideo("Star Wars Episode IV: A New Hope");
+            VideoStore store= new VideoStore();
+            Video matrixVideo = new Video("The Matrix");
+            Video godfatherVideo = new Video("Godfather II");
+            Video starWarsVideo = new Video("Star Wars Episode IV: A New Hope");
 
-            vstore.ReceiveRating("The Matrix",4);
-            vstore.ReceiveRating("The Matrix", 5);
-            vstore.ReceiveRating("The Matrix", 5);
-                
-            vstore.ReceiveRating("Godfather II", 5);
-            vstore.ReceiveRating("Godfather II", 3);
-            vstore.ReceiveRating("Godfather II", 2);
+            store.AddVideo(matrixVideo);
+            store.AddVideo(godfatherVideo);
+            store.AddVideo(starWarsVideo);
 
-            vstore.ReceiveRating("Star Wars Episode IV: A New Hope", 4);
-            vstore.ReceiveRating("Star Wars Episode IV: A New Hope", 3);
-            vstore.ReceiveRating("Star Wars Episode IV: A New Hope", 4);
+            // Give several ratings to each video
+            matrixVideo.ReceiveRating(4.0);
+            matrixVideo.ReceiveRating(4.5);
+            matrixVideo.ReceiveRating(3.5);
 
-            vstore.CheckOut("The Matrix");
-            vstore.ReturnVideo("The Matrix");
+            godfatherVideo.ReceiveRating(5.0);
+            godfatherVideo.ReceiveRating(4.0);
+            godfatherVideo.ReceiveRating(4.5);
 
-            vstore.CheckOut("Godfather II");
-            vstore.ReturnVideo("Godfather II");
+            starWarsVideo.ReceiveRating(4.0);
+            starWarsVideo.ReceiveRating(3.5);
+            starWarsVideo.ReceiveRating(4.5);
 
-            vstore.CheckOut("Godfather II");
-            vstore.ReturnVideo("Godfather II");
+            // Rent each video out once and return it
+            store.CheckoutVideo(matrixVideo);
+            store.ReturnVideo(matrixVideo);
 
+            store.CheckoutVideo(godfatherVideo);
+            store.ReturnVideo(godfatherVideo);
 
-            vstore.Inventorylist();
+            store.CheckoutVideo(starWarsVideo);
+            store.ReturnVideo(starWarsVideo);
 
+            // List the inventory after "Godfather II" has been rented out
+            store.CheckoutVideo(godfatherVideo);
+            Console.WriteLine("Inventory:");
+            foreach (Video video in store.GetAvailableVideos())
+            {
+                Console.WriteLine("Title: " + video.GetTitle());
+                Console.WriteLine("Average rating: " + video.GetAverageRating());
+                Console.WriteLine("Checked out: " + video.IsCheckedOut());
+                Console.WriteLine();
+            }
         }
 
     }

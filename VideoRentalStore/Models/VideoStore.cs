@@ -1,68 +1,71 @@
-﻿namespace VideoRentalStore.Models
+﻿using NuGet.Packaging;
+using System;
+using System.Text;
+
+namespace VideoRentalStore.Models
 {
-    public class VideoStore : Video
+    // Open/Closed Principle (OCP)
+    public class VideoStore
     {
-
-        static int i = 0;
-
-        Video[] Videos = new Video[10];
-        VideoRent VideoRent=new VideoRent();
-
-        public void addVideo(string title)
+        private List<Video> videos;
+        public VideoStore()
         {
-            for (int i = 0; i < Videos.Length; i++)
-            {
-                if (Videos[i] == null)
-                {
-                    Videos[i] = new Video { Title = title };
-                    break;
-                }
-            }
-        }
-        public void CheckOut(string title)
-        {
-            foreach (Video video in Videos)
-            {
-                if (video != null && video.Title == title)
-                {
-                    VideoRent.CheckOut();
-                    break;
-                }
-            }
+            videos = new List<Video>();
         }
 
-        public void ReturnVideo(string title)
+        public void AddVideo(Video video)
         {
-            foreach (Video video in Videos)
+            videos.Add(video);
+        }
+
+        public void RemoveVideo(Video video)
+        {
+            videos.Remove(video);
+        }
+
+        public List<Video> GetAvailableVideos()
+        {
+            return videos.Where(video => !video.IsCheckedOut()).ToList();
+        }
+
+        public List<Video> GetCheckedOutVideos()
+        {
+            return videos.Where(video => video.IsCheckedOut()).ToList();
+        }
+
+        public void RateVideo(Video video, double rating)
+        {
+            video.ReceiveRating(rating);
+        }
+        public void CheckoutVideo(Video video)
+        {
+            if (videos.Contains(video))
             {
-                if (video != null && video.Title == title)
-                {
-                    VideoRent.Return();
-                    break;
-                }
+                video.CheckOut();
             }
         }
-        public void ReceiveRating(string title, int rating)
+
+        public void ReturnVideo(Video video)
         {
-            foreach (Video video in Videos)
+            if (videos.Contains(video))
             {
-                if (video != null && video.Title == title)
-                {
-                    video.ReceiveRating(rating);
-                    break;
-                }
-            }
-        }
-        public void Inventorylist()
-        {
-            foreach (Video video in Videos)
-            {
-                if (video != null)
-                {
-                    Console.WriteLine("Title: {0}, Average Rating: {1}, Checked Out: {2}", video.Title, video.AverageRating, VideoRent.CheckedOut ? "Yes" : "No");
-                }
+                video.Return();
             }
         }
 
     }
+    // Interface for Ratingable objects that can receive ratings
+    public interface IRatingable
+    {
+        void ReceiveRating(double rating);
+    }
+
+    // RatingService class that can rate any object that implements IRatingable
+    public class RatingService
+    {
+        public void Rate(IRatingable ratingable, double rating)
+        {
+            ratingable.ReceiveRating(rating);
+        }
+    }   
 }
